@@ -1,22 +1,26 @@
-from fastapi import FastAPI, Request
+# backend/main.py
+
+from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 
 app = FastAPI()
 
-# ✅ CORS Middleware
+# 👇 Allow React dev server to connect (Vite: localhost:5173)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # or ["*"] for any origin (dev only)
-    allow_credentials=True,
-    allow_methods=["*"],  # ← this is critical
-    allow_headers=["*"],  # ← this too
+    allow_origins=["http://localhost:5173"],
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
+class TextInput(BaseModel):
+    text: str
+
 @app.post("/analyze")
-async def analyze(request: Request):
-    data = await request.json()
-    text = data.get("text", "")
-    return {
-        "emotion": "Anxious",
-        "confidence": 0.87
-    }
+async def analyze_text(input: TextInput):
+    return {"emotion": "Anxious", "confidence": 0.87}
+
+@app.get("/")
+async def root():
+    return {"message": "Backend is running ✅"}

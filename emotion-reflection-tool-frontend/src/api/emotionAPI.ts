@@ -1,20 +1,35 @@
-// src/api/emotionAPI.ts
-import type { EmotionRequest, EmotionResponse } from "../types";
+export interface EmotionRequest {
+  text: string;
+}
+
+export interface EmotionResponse {
+  emotion: string;
+  confidence: number;
+}
 
 export async function analyzeEmotion(
-  data: EmotionRequest
+  input: EmotionRequest
 ): Promise<EmotionResponse> {
-  const response = await fetch("http://127.0.0.1:8000/analyze", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(data),
-  });
+  try {
+    const response = await fetch("http://localhost:8000/analyze", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(input),
+    });
 
-  if (!response.ok) {
-    throw new Error("Failed to analyze emotion");
+    if (!response.ok) {
+      throw new Error("Server responded with an error");
+    }
+
+    const data = await response.json();
+    return {
+      emotion: data.emotion,
+      confidence: data.confidence,
+    };
+  } catch (error) {
+    console.error("Error analyzing emotion:", error);
+    throw new Error("Something went wrong while analyzing your emotion.");
   }
-
-  return response.json();
 }
