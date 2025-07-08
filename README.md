@@ -1,102 +1,170 @@
-# EMOTION-REFLECTION-TOOL
+Of course! Here is the content you provided, formatted as a clean README.md file. You can copy and paste the entire content below.
 
-A **mobile-first web app** that allows users to reflect on their emotions through text, receives a mock emotional analysis via a Python backend (**FastAPI**), and presents the response with an empathetic UI.
+EMOTION-REFLECTION-TOOL
 
-## 🎥 Loom Video
- - https://www.loom.com/share/ac62ea1792084ae9bb9f7d05aeeea965?sid=470f7d13-9df0-4bd3-a683-0bbe60d0e5c6
+A mobile-first web app that allows users to reflect on their emotions through text, receives a mock emotional analysis via a Python backend (FastAPI), and presents the response with an empathetic UI.
 
----
+🎥 Loom Video
 
-## ✨ Features
+View Demo on Loom
 
-- 📱 Mobile-first responsive design
-- 💬 Input box for emotional reflection
-- ⚡ Real-time API communication
-- 🧠 Returns mock emotion + confidence score
-- 🌈 Styled orb + calming UI
+✨ Features
 
----
+📱 Mobile-first responsive design
 
-## 🛠️ Tech Stack
+💬 Input box for emotional reflection
 
-**Frontend**
-- React + TypeScript
-- Vite
-- Custom CSS
-- REST API integration
+⚡ Real-time API communication
 
-**Backend**
-- FastAPI (Python)
-- Pydantic for request/response validation
-- CORS middleware
+🧠 Returns mock emotion + confidence score
 
----
+🌈 Styled orb + calming UI
 
-## 📦 Project Structure
+🛠️ Tech Stack
+Frontend
 
-### Frontend (React)
-emotion-reflection-tool/
-├── backend/ # FastAPI backend
-│ ├── main.py # FastAPI app
-│ ├── requirements.txt # Python dependencies
-├── frontend/ # React frontend (Vite)
-│ ├── src/ # React components
-│ ├── index.html
-│ ├── package.json
-├── venv/ # Python virtual environment (not pushed to Git)
-├── README.md
+React + TypeScript
+
+Vite
+
+Custom CSS
+
+REST API integration (using fetch)
+
+Backend
+
+FastAPI (Python)
+
+Pydantic for request/response validation
+
+CORS middleware
+
+📦 Project Structure
+Generated code
+.
+├── backend/                  # FastAPI backend
+│   ├── main.py               # FastAPI app
+│   └── requirements.txt      # Python dependencies
+├── frontend/                 # React frontend (Vite)
+│   ├── public/
+│   ├── src/                  # React components, hooks, and styles
+│   ├── index.html
+│   ├── package.json
+│   └── vite.config.ts
+├── venv/                     # Python virtual environment (ignored by Git)
 ├── .gitignore
+└── README.md
 
-
----
-
-## ⚙️ Setup Instructions
-
-### 1️⃣ Clone the repository
-
-```bash
+⚙️ Setup and Installation
+1️⃣ Clone the repository
+Generated bash
 git clone https://github.com/KindaJayant/sarthi-assignment.git
 cd sarthi-assignment
-```
-### 2️⃣ Start the backend (FastAPI)
-# Create virtual environment
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
+2️⃣ Start the Backend (FastAPI)
+
+Create and activate a virtual environment:
+
+Generated bash
+# Create the environment
 python -m venv venv
 
-# Activate it:
-# Windows:
+# Activate it
+# On Windows:
 .\venv\Scripts\activate
 
-# macOS/Linux:
+# On macOS/Linux:
 source venv/bin/activate
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
 
-# Install dependencies
+Install dependencies:
+
+Generated bash
 pip install -r backend/requirements.txt
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
 
-# Run the FastAPI server
+Run the FastAPI server:
+
+Generated bash
 uvicorn backend.main:app --reload
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
 
-The backend will be available at http://127.0.0.1:8000
-Interactive API docs: http://127.0.0.1:8000/docs
+The backend will now be running at http://127.0.0.1:8000.
+You can view the interactive API documentation at http://127.0.0.1:8000/docs.
 
-### 3️⃣ Start the fronted (React)
+3️⃣ Start the Frontend (React)
 
+In a new terminal window, navigate to the frontend directory and run the following commands:
+
+Go to the frontend directory:
+
+Generated bash
 cd frontend
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
+
+Install dependencies:
+
+Generated bash
 npm install
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
+
+Run the React development server:
+
+Generated bash
 npm run dev
+IGNORE_WHEN_COPYING_START
+content_copy
+download
+Use code with caution.
+Bash
+IGNORE_WHEN_COPYING_END
 
-### ✅ How it works
+The frontend will be available at http://localhost:5173 (or another port if 5173 is in use).
 
-User types a short reflection, e.g. “I feel nervous about my first job interview.”
+✅ How It Works
 
-Click Submit
+A user types a short reflection into the text area, for example: “I feel nervous about my first job interview.”
 
-Frontend sends the text to /analyze API (FastAPI)
+The user clicks the Submit button.
 
-Backend returns a fake emotion and confidence
+The React frontend sends the text to the /analyze API endpoint on the FastAPI backend.
 
-Frontend displays the result with an animated orb and styled card
+The backend processes the request and returns a JSON response with a fake emotion and a confidence score (e.g., {"emotion": "Anxious", "confidence": 0.88}).
+
+The frontend receives the response and dynamically displays the result with a color-coded, animated orb and a styled information card.
 
 🙌 Author
-Jayant Singh
-GitHub
 
+Jayant Singh
+
+GitHub: @KindaJayant
