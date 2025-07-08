@@ -1,170 +1,125 @@
-Of course! Here is the content you provided, formatted as a clean README.md file. You can copy and paste the entire content below.
+# EMOTION-REFLECTION-TOOL
 
-EMOTION-REFLECTION-TOOL
+A **mobile-first web app** that allows users to reflect on their emotions through short text input, receives a **mock emotional analysis** from a Python backend (**FastAPI**), and presents the response through a calming, empathetic UI.
 
-A mobile-first web app that allows users to reflect on their emotions through text, receives a mock emotional analysis via a Python backend (FastAPI), and presents the response with an empathetic UI.
+---
 
-🎥 Loom Video
+## 🎥 Loom Video
 
-View Demo on Loom
+[Watch a quick walkthrough here](https://www.loom.com/share/ac62ea1792084ae9bb9f7d05aeeea965?sid=470f7d13-9df0-4bd3-a683-0bbe60d0e5c6)
 
-✨ Features
+---
 
-📱 Mobile-first responsive design
+## ✨ Features
 
-💬 Input box for emotional reflection
+- 📱 **Mobile-first responsive design**
+- 💬 Simple input box for text reflections
+- ⚡ Real-time API communication with FastAPI backend
+- 🧠 Returns mock emotion + confidence score (e.g., `{ "emotion": "Anxious", "confidence": 0.85 }`)
+- 🌈 Styled interactive orb + calming UI colors
 
-⚡ Real-time API communication
+---
 
-🧠 Returns mock emotion + confidence score
+## 🛠️ Tech Stack
 
-🌈 Styled orb + calming UI
+### Frontend
 
-🛠️ Tech Stack
-Frontend
+- React + TypeScript
+- Vite for fast dev server
+- Custom CSS (Orb animation, responsive layout)
+- REST API integration with `fetch`
 
-React + TypeScript
+### Backend
 
-Vite
+- FastAPI (Python)
+- `pydantic` for request/response validation
+- CORS middleware for local dev with React
 
-Custom CSS
+---
 
-REST API integration (using fetch)
+## 📦 Project Structure
 
-Backend
+```
+emotion-reflection-tool/
+ ├── backend/                   # FastAPI backend
+ │   ├── main.py                # FastAPI app
+ │   ├── requirements.txt       # Python dependencies
+ ├── frontend/                  # React frontend (Vite)
+ │   ├── src/                   # React components
+ │   ├── index.html
+ │   ├── package.json
+ ├── venv/                      # Python virtual environment (not pushed to Git)
+ ├── README.md
+ ├── .gitignore
+```
 
-FastAPI (Python)
+---
 
-Pydantic for request/response validation
+## ⚙️ Setup Instructions
 
-CORS middleware
+### 1️⃣ Clone the repository
 
-📦 Project Structure
-Generated code
-.
-├── backend/                  # FastAPI backend
-│   ├── main.py               # FastAPI app
-│   └── requirements.txt      # Python dependencies
-├── frontend/                 # React frontend (Vite)
-│   ├── public/
-│   ├── src/                  # React components, hooks, and styles
-│   ├── index.html
-│   ├── package.json
-│   └── vite.config.ts
-├── venv/                     # Python virtual environment (ignored by Git)
-├── .gitignore
-└── README.md
-
-⚙️ Setup and Installation
-1️⃣ Clone the repository
-Generated bash
+```bash
 git clone https://github.com/KindaJayant/sarthi-assignment.git
 cd sarthi-assignment
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
-2️⃣ Start the Backend (FastAPI)
+```
 
-Create and activate a virtual environment:
+---
 
-Generated bash
-# Create the environment
+### 2️⃣ Start the backend (FastAPI)
+
+```bash
+# Create virtual environment
 python -m venv venv
 
-# Activate it
-# On Windows:
+# Activate it:
+# Windows:
 .\venv\Scripts\activate
 
-# On macOS/Linux:
+# macOS/Linux:
 source venv/bin/activate
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
 
-Install dependencies:
-
-Generated bash
+# Install dependencies
 pip install -r backend/requirements.txt
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
 
-Run the FastAPI server:
-
-Generated bash
+# Run the FastAPI server
 uvicorn backend.main:app --reload
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+```
 
-The backend will now be running at http://127.0.0.1:8000.
-You can view the interactive API documentation at http://127.0.0.1:8000/docs.
+Backend will be available at: [http://127.0.0.1:8000](http://127.0.0.1:8000)  
+Interactive docs: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
-3️⃣ Start the Frontend (React)
+---
 
-In a new terminal window, navigate to the frontend directory and run the following commands:
+### 3️⃣ Start the frontend (React)
 
-Go to the frontend directory:
-
-Generated bash
+```bash
 cd frontend
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
-
-Install dependencies:
-
-Generated bash
 npm install
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
-
-Run the React development server:
-
-Generated bash
 npm run dev
-IGNORE_WHEN_COPYING_START
-content_copy
-download
-Use code with caution.
-Bash
-IGNORE_WHEN_COPYING_END
+```
 
-The frontend will be available at http://localhost:5173 (or another port if 5173 is in use).
+Frontend will run at: [http://localhost:5173](http://localhost:5173)
 
-✅ How It Works
+---
 
-A user types a short reflection into the text area, for example: “I feel nervous about my first job interview.”
+## ✅ How it works
 
-The user clicks the Submit button.
+1. User types a short reflection (e.g., *“I feel nervous about my first job interview.”*)
+2. Click **Submit**
+3. Frontend sends the text to `/analyze` API (FastAPI)
+4. Backend returns a fake `emotion` + `confidence`
+5. Frontend displays the result with an animated orb + styled card
 
-The React frontend sends the text to the /analyze API endpoint on the FastAPI backend.
+---
 
-The backend processes the request and returns a JSON response with a fake emotion and a confidence score (e.g., {"emotion": "Anxious", "confidence": 0.88}).
+## 🙌 Author
 
-The frontend receives the response and dynamically displays the result with a color-coded, animated orb and a styled information card.
+**Jayant Singh**  
+[GitHub](https://github.com/KindaJayant)
 
-🙌 Author
+---
 
-Jayant Singh
+## 📄 License
 
-GitHub: @KindaJayant
+For internship assignment demo purposes only.
