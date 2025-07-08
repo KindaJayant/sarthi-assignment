@@ -1,0 +1,38 @@
+.page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: radial-gradient(ellipse at center, #0c0f2d 0%, #000 100%);
+}
+
+.app {
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 8px;
+  background-color: #131424;
+  color: white;
+  border: 1px solid #333;
+  resize: vertical;
+}
+
+.status,
+.error {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
