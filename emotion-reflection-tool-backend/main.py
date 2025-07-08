@@ -1,28 +1,21 @@
-
-from fastapi import FastAPI
-from pydantic import BaseModel
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# ✅ CORS Middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], 
+    allow_origins=["http://localhost:5173"],  # or ["*"] for any origin (dev only)
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["*"],  # ← this is critical
+    allow_headers=["*"],  # ← this too
 )
 
-class EmotionRequest(BaseModel):
-    text: str
-
-class EmotionResponse(BaseModel):
-    emotion: str
-    confidence: float
-
-@app.post("/analyze", response_model=EmotionResponse)
-def analyze_emotion(data: EmotionRequest):
-    #fake logic 
+@app.post("/analyze")
+async def analyze(request: Request):
+    data = await request.json()
+    text = data.get("text", "")
     return {
         "emotion": "Anxious",
         "confidence": 0.87
